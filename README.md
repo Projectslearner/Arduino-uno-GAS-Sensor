@@ -1,85 +1,59 @@
-# Gas Detection System Using Arduino and MQ2 Gas Sensor
+# Arduino Uno GAS Sensor
 
-## Description
+#### Project Overview
 
-This project demonstrates how to build a gas detection system using an Arduino and an MQ2 gas sensor. The system monitors the concentration of gas in the environment and triggers an LED to indicate the presence of gas. The sensor's analog values are read and converted into a PWM signal to control the LED, providing a visual indication of gas concentration. This project is useful for detecting dangerous gas levels in residential, commercial, or industrial settings.
+This project demonstrates how to use a gas sensor with an Arduino Uno to detect the presence of gases in the environment. The sensor's analog output is read by the Arduino, and the system determines if the gas concentration exceeds a predefined threshold. If it does, a message is printed to the serial monitor indicating gas detection.
 
-## Components Needed
+#### Components Needed
 
-1. **Arduino UNO**
-2. **MQ2 Gas Sensor**
-3. **LED**
-4. **Breadboard**
-5. **Jumper Wires**
-6. **Resistor** (e.g., 220 ohms for LED current limiting)
+- **Arduino Uno**
+- **Gas Sensor (e.g., MQ-2, MQ-3, MQ-5)**
+- **Jumper Wires**
+- **Breadboard**
 
-## Diagram
+#### Block diagram
 
-*I will update the block diagram with a logo or watermark ASAP. Please leave it for now.*
 
-## Instructions
+#### Circuit Setup
 
-### Connecting the Components
+1. **Connect the Gas Sensor to Arduino Uno:**
+   - **VCC Pin:** Connect to 5V on the Arduino Uno.
+   - **GND Pin:** Connect to GND on the Arduino Uno.
+   - **Analog Output Pin:** Connect to analog pin A0 on the Arduino Uno.
 
-1. **Input Sensor to Controller:**
-   - Insert the MQ2 gas sensor into the breadboard.
-   - Connect the VCC pin of the MQ2 sensor to the 5V pin on the Arduino.
-   - Connect the GND pin of the MQ2 sensor to the GND pin on the Arduino.
-   - Connect the analog output pin of the MQ2 sensor to the A0 pin on the Arduino.
+#### Instructions
 
-2. **Microcontroller to Output Devices:**
-   - Connect the anode (longer leg) of the LED to digital pin 6 on the Arduino through a current-limiting resistor (e.g., 220 ohms).
-   - Connect the cathode (shorter leg) of the LED to the GND pin on the Arduino.
+1. **Circuit Setup:**
+   - Connect the gas sensor to the Arduino Uno as described in the circuit setup section.
 
-### Power the Arduino
+2. **Code Upload:**
+   - Open the Arduino IDE and create a new sketch.
+   - Copy and paste the provided Arduino code into the sketch.
 
-- Connect the Arduino to your computer using a USB cable.
+3. **Testing:**
+   - Upload the code to the Arduino Uno.
+   - Open the serial monitor with a baud rate of 9600.
+   - Observe the serial monitor output displaying "Gas detected!" when the sensor value exceeds the threshold (300) and "No gas detected." otherwise. The sensor value will also be printed for reference.
 
-### Upload the Code and Observe the Data
+#### Applications
 
-1. **Load the Program:**
-   - Open the Arduino IDE on your computer.
-   - Write or paste the provided program into the IDE.
-   - Select the correct board and port in the Arduino IDE under the Tools menu.
-   - Upload the program to the Arduino.
+- **Safety Systems:** Use for detecting hazardous gases in industrial or domestic environments.
+- **Environmental Monitoring:** Implement in systems for monitoring air quality.
+- **Prototyping:** Useful for testing gas detection in various projects.
 
-2. **Monitor the Output:**
-   - Open the Serial Monitor in the Arduino IDE by selecting Tools > Serial Monitor.
-   - Set the baud rate to 9600 in the Serial Monitor.
-   - Observe the analog output values from the sensor printed on the Serial Monitor.
+#### Notes
 
-## Project Operation
-
-- **Initialization:**
-  - The Arduino initializes serial communication at 9600 baud, sets the LED pin as an output, and ensures the LED is initially off.
-
-- **Reading Sensor Values:**
-  - The analog value from the MQ2 gas sensor is read and mapped to a PWM value ranging from 0 to 255.
-  - If the gas concentration (output value) is above the threshold (65), the LED lights up with brightness proportional to the gas concentration.
-  - If the gas concentration is below the threshold, the LED remains off.
-
-- **Serial Monitoring:**
-  - The analog output values from the sensor are printed to the Serial Monitor for observation.
-
-## Applications
-
-1. **Home Safety:** Monitor gas levels to detect leaks in residential settings.
-2. **Industrial Safety:** Detect gas leaks in factories and industrial plants.
-3. **Environmental Monitoring:** Measure air quality and pollution levels in various environments.
-
-## Observe the Data
-
-To read data from the MQ2 gas sensor, you need to upload the provided sketch to the Arduino. After connecting the Arduino to your computer and uploading the program, you should see the gas concentration values displayed on the Serial Monitor, confirming the sensor's functionality.
+- Ensure the gas sensor is correctly connected to the Arduino Uno and powered.
+- Adjust the threshold value in the code (`const int threshold = 300;`) based on your specific sensor and application requirements.
+- Allow the gas sensor to preheat according to the manufacturer's instructions for accurate readings.
 
 ---
 
-### Whether you're working on electronics projects, IoT applications, or robotics innovations, Projects Learner is your go-to platform for guidance and expertise.
-
-🌐 [projectslearner.com](https://www.projectslearner.com)  
+🌐 [ProjectsLearner](https://projectslearner.com/learn/arduino-uno-gas-sensor)  
 📧 [projectslearner@gmail.com](mailto:projectslearner@gmail.com)  
 📸 [Instagram](https://www.instagram.com/projectslearner/)  
 📘 [Facebook](https://www.facebook.com/projectslearner)  
 ▶️ [YouTube](https://www.youtube.com/@ProjectsLearner)  
 📘 [LinkedIn](https://www.linkedin.com/in/projectslearner)  
 
-## Made for you with ❣️ from ProjectsLearner
+Crafted for you with ❤️ from ProjectsLearner

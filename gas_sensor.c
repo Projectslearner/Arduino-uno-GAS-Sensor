@@ -1,57 +1,34 @@
 /*
-    Code by : Projects_learner
-    Project name : Gas Sensor using Ardino UNO
-    Modified Date : 02-06-2024
+    Project name : Arduino Uno GAS Sensor
+    Modified Date: 27-06-2024
+    Code by : Projectslearner
     Website : https://projectslearner.com/learn/arduino-uno-gas-sensor
 */
-// Sensor pins pin D6 LED output, pin A0 analog Input
 
-
-#define ledPin 6
-
-#define sensorPin A0
-
+const int gasSensorPin = A0; // Analog pin connected to the gas sensor
+const int threshold = 300;   // Threshold value for gas detection
+int sensorValue = 0;         // Variable to store the sensor value
 
 void setup() {
-
+  // Initialize serial communication for debugging purposes
   Serial.begin(9600);
-
-  pinMode(ledPin, OUTPUT);
-
-  digitalWrite(ledPin, LOW);
-
 }
-
 
 void loop() {
-
-  Serial.print("Analog output: ");
-
-  Serial.println(readSensor());
-
-  delay(500);
-
-}
-
-
-//  This function returns the analog data to calling function
-
-int readSensor() {
-
-  unsigned int sensorValue = analogRead(sensorPin);  // Read the analog value from sensor
-
-  unsigned int outputValue = map(sensorValue, 0, 1023, 0, 255); // map the 10-bit data to 8-bit data
-
-
-  if (outputValue > 65)
-
-    analogWrite(ledPin, outputValue); // generate PWM signal
-
-
-  else
-
-    digitalWrite(ledPin, LOW);
-
-  return outputValue;             // Return analog moisture value
-
+  // Read the analog input from the gas sensor
+  sensorValue = analogRead(gasSensorPin);
+  
+  // Check if the sensor value exceeds the threshold
+  if (sensorValue > threshold) {
+    Serial.println("Gas detected!");
+  } else {
+    Serial.println("No gas detected.");
+  }
+  
+  // Print the sensor value for reference
+  Serial.print("Sensor Value: ");
+  Serial.println(sensorValue);
+  
+  // Wait for a short period before taking another reading
+  delay(1000);
 }
